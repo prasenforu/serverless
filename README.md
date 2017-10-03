@@ -21,8 +21,6 @@ The controller serves the fission API. All the other components watch the contro
 
 When the router gets a request, it looks up a cache to see if this request already has a service it should be routed to. If not, it looks up the function to map the request to, and requests the poolmgr for an instance. The poolmgr has a pool of idle pods; it picks one, loads the function into it (by sending a request into a sidecar container in the pod), and returns the address of the pod to the router. The router  proxies over the request to this pod. The pod is cached for subsequent requests, and if it's been idle for a few minutes, it is killed.
 
-(For now, Fission maps one function to one container; autoscaling to multiple instances is planned for a later release. Re-using function pods to host multiple functions is also planned, for cases where isolation isn't a requirement.)
-
 ## Installation
 
 After Installation of Kubernetes cluster, make sure cluster running.
