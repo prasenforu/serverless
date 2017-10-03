@@ -46,7 +46,7 @@ export FISSION_URL=http://$(server ip):31313
 export FISSION_ROUTER=$(server ip):31314
 ```
 
-#### Step-3 Installing fission CLI
+#### Step-3 Installing fission CLI (Command Line Interface)
 
 ```curl http://fission.io/linux/fission > fission && chmod +x fission && sudo mv fission/usr/local/bin/```
 
@@ -54,7 +54,7 @@ export FISSION_ROUTER=$(server ip):31314
 
 ```kubectl create -f fission-ui.yml```
 
-#### Step-5 Deploying code using Fission
+## Sample Deployment code using fission
 
 ###### Create new python file
 
