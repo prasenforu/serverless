@@ -4,7 +4,7 @@
 
 Fission is a new open-source, Function as a Service framework built on top of Kubernetes. This serverless framework focuses on developer productivity and high performance and takes care of the details at the container or Kubernetes level. Fission enables developers to write short-lived functions in any language, and map them to HTTP requests or event triggers. With this framework, you can simply create functions and instantly deploy them via CLI. Kubernetes offers a powerful and flexible orchestration system for Fission to upload and run code without having to worry about building containers and managing Docker registries. The framework is extensible to any programming language; it currently supports NodeJS and Python.
 
-Fission is open source under the Apache License. Fission can run on any platform where Kubernetes can run, in Data Centre, Public & Private Cloud.
+Fission is open source under the Apache License. Fission can run on any platform where Kubernetes can run, in Data Centre (physical or Virtual), Public & Private Cloud.
 
 ## Architecture 
 
@@ -46,7 +46,7 @@ export FISSION_ROUTER=$(server ip):31314
 
 #### Step-3 Installing fission CLI (Command Line Interface)
 
-```curl http://fission.io/linux/fission > fission && chmod +x fission && sudo mv fission/usr/local/bin/```
+```curl http://fission.io/linux/fission > fission && chmod +x fission && sudo mv fission /usr/local/bin/```
 
 #### Step-4 Installing Fission UI (User Interface)
 
