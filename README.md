@@ -27,7 +27,7 @@ After Installation of Kubernetes cluster, make sure cluster running.
 
 #### Verify access to the cluster:
 
-```# kubectl version```
+```kubectl version```
 
 #### Build Fission setup
 
@@ -44,8 +44,53 @@ export FISSION_URL=http://$(server ip):31313
 export FISSION_ROUTER=$(server ip):31314
 ```
 
-##### Installing fission CLI
+#### Installing fission CLI
 
 ```curl http://fission.io/linux/fission > fission && chmod +x fission && sudo mv fission/usr/local/bin/```
 
+#### Installing Fission UI (User Interface)
 
+```kubectl create -f fission-ui.yml```
+
+#### Deploying code using Fission
+
+###### Create new python file
+
+```
+cat hello_world.py
+def main():
+    return “Hello, World!\n”
+```    
+
+###### Check if the environment is already created for  python application
+
+```
+fission env get --name python
+Failed to get environment: (Error 0) HTTP error 500
+```
+
+###### Create new environment for python application
+
+```
+fission env create --name python --image fission/python-env
+environment 'python' created
+```
+
+###### Check if image env is created:
+
+```fission env get --name python```
+
+###### Create new function that uses the image
+
+```
+fission function create --name hello_world --env python --code hello_world.py --url /hello_world --method GET
+function 'hello_world' created
+route created: GET /hello_world -> hello_world
+```
+
+###### Test if the function runs
+
+```
+curl http://$FISSION_ROUTER/hello_world
+Hello, World!
+```
