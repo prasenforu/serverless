@@ -27,11 +27,11 @@ When the router gets a request, it looks up a cache to see if this request alrea
 
 After Installation of Kubernetes cluster, make sure cluster running.
 
-#### Verify access to the cluster:
+#### Step-1 Verify access to the cluster:
 
 ```kubectl version```
 
-#### Build Fission setup
+#### Step-2 Build Fission setup
 
 ```kubectl create -f fission.yml```
 
@@ -46,15 +46,15 @@ export FISSION_URL=http://$(server ip):31313
 export FISSION_ROUTER=$(server ip):31314
 ```
 
-#### Installing fission CLI
+#### Step-3 Installing fission CLI
 
 ```curl http://fission.io/linux/fission > fission && chmod +x fission && sudo mv fission/usr/local/bin/```
 
-#### Installing Fission UI (User Interface)
+#### Step-4 Installing Fission UI (User Interface)
 
 ```kubectl create -f fission-ui.yml```
 
-#### Deploying code using Fission
+#### Step-5 Deploying code using Fission
 
 ###### Create new python file
 
