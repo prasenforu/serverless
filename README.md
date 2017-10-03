@@ -14,8 +14,8 @@ Fission is open source under the Apache License. Fission can run on any platform
 
 ## How Fission works on Kubernetes
 
-Fission is designed as a set of microservices. A Controller keeps track of functions, HTTP
-routes, event triggers, and environment images. A Pool Manager manages pools of idle environment containers, the loading of functions into these containers, and the killing of function instances when they're idle. A Router receives HTTP requests and routes them to function instances, requesting an instance from the Pool Manager if necessary.
+Fission is designed as a set of microservices. A ```Controller``` keeps track of functions, HTTP
+routes, event triggers, and environment images. A ```Pool Manager``` manages pools of idle environment containers, the loading of functions into these containers, and the killing of function instances when they're idle. A ```Router``` receives HTTP requests and routes them to function instances, requesting an instance from the Pool Manager if necessary.
 
 The controller serves the fission API. All the other components watch the controller for updates. The router is exposed as a Kubernetes Service of the LoadBalancer or NodePort type, depending on where the Kubernetes cluster is hosted.
 
