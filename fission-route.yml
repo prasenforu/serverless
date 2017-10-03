@@ -7,8 +7,7 @@ metadata:
     svc: router
 spec:
   ports:
-  - name: 8888-tcp
-    port: 80
+  - port: 80
     targetPort: 8888
   selector:
     svc: router
@@ -23,40 +22,41 @@ metadata:
     svc: controller
 spec:
   ports:
-  - name: 8888-tcp
-    port: 80
+  - port: 80
     targetPort: 8888
   selector:
     svc: controller
 
 ---
-apiVersion: v1
-kind: Route
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
   labels:
-  context: fission-router
+    k8s-app: fission-router
   name: fission-router
   namespace: fission
 spec:
-  host: fission-router.cloudapps.cloud-cafe.in
-  port:
-    targetPort: 8888-tcp
-  to:
-    kind: Service
-    name: router
+  rules:
+    - host: fission-router.cloudapps.cloud-cafe.in
+      http:
+        paths:
+          - backend:
+              serviceName: router
+              servicePort: 8888
 
 ---
-apiVersion: v1
-kind: Route
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
   labels:
-  context: fission-controller
+    k8s-app: fission-controller
   name: fission-controller
   namespace: fission
 spec:
-  host: fission-controller.cloudapps.cloud-cafe.in
-  port:
-    targetPort: 8888-tcp
-  to:
-    kind: Service
-    name: controller
+  rules:
+    - host: fission-controller.cloudapps.cloud-cafe.in
+      http:
+        paths:
+          - backend:
+              serviceName: controller
+              servicePort: 8888
