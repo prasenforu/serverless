@@ -23,3 +23,29 @@ When the router gets a request, it looks up a cache to see if this request alrea
 
 ## Installation
 
+After Installation of Kubernetes cluster, make sure cluster running.
+
+#### Verify access to the cluster:
+
+```# kubectl version```
+
+#### Build Fission setup
+
+```kubectl create -f fission.yml```
+
+Set up services with NodePort in case you are deploying it on Minikube or on  cloud service provider. These files run on 31313 and 31314 ports.
+
+```kubectl create -f fission-nodeport.yml```
+
+Set the FISSION_URL and FISSION_ROUTER environment variable. The fission command line interface uses the FISSION_URL to find the server. The URL has to be prefixed with http://.
+
+```
+export FISSION_URL=http://$(server ip):31313
+export FISSION_ROUTER=$(server ip):31314
+```
+
+##### Installing fission CLI
+
+```curl http://fission.io/linux/fission > fission && chmod +x fission && sudo mv fission/usr/local/bin/```
+
+
