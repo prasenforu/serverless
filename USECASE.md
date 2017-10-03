@@ -21,3 +21,5 @@ Webhooks are a popular way to integrate with third-party services. Slack provide
 </p>
 
 By subscribing to Kubernetes watches, you can write custom automation for your Kubernetes infrastructure. Fission's integration with Kubernetes watches allows you to monitor resources such as Pods and Services, and execute arbitrary functions when the watched set of resources change.
+
+##### Fission enables you to spin up machines, auto-scale databases and infrastructure. It allows developers to easily build additional tools and integrate as and when required. The goal with Fission is to make consumption of Kubernetes micro-services even easier.
