@@ -68,6 +68,7 @@ def main():
 
 ```
 fission env get --name python
+
 Failed to get environment: (Error 0) HTTP error 500
 ```
 
@@ -75,6 +76,7 @@ Failed to get environment: (Error 0) HTTP error 500
 
 ```
 fission env create --name python --image fission/python-env
+
 environment 'python' created
 ```
 
@@ -86,6 +88,7 @@ environment 'python' created
 
 ```
 fission function create --name hello_world --env python --code hello_world.py --url /hello_world --method GET
+
 function 'hello_world' created
 route created: GET /hello_world -> hello_world
 ```
