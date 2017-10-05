@@ -43,24 +43,24 @@ When the router gets a request, it looks up a cache to see if this request alrea
 
 #### Lets! break down function’s life cycle creation (by the developer) and its execution (by the user or client application). 
 
-##### a. 
-After coding the function, the developer uploads it to Fission via the REST API provided by the controller. To facilitate interaction with Fission, we have the fission-client client for Mac and Linux. The controller stores the lambda function and related information in its database (etcd)
+##### First Step. 
+After coding the function, the developer uploads it to Fission via the REST API provided by the controller. To facilitate interaction with Fission, we have the fission-client client for Mac and Linux. The controller stores the function and related information in its database (etcd)
 
-##### b.
-After loading the function, and also interacting with the controller, we create a new path that will allow us to call the function by means of a URL such as http://FISION_ROUTER/my_function
+##### Second Step.
+After loading the function, and also interacting with the controller, we create a new path that will allow us to call the function by means of a URL such as http://FISION_ROUTER/hello_world
 
 Once the function is ready for use, its life cycle consists of the following steps:
 
-##### 1.
-When the function is called through HTTP, what we do is contact the router, which reroutes our requests to the right address. In our case, a request to http://FISION_ROUTER/my_function will be handled by function hello.js.
+##### Step #1.
+When the function is called through HTTP, what we do is contact the router, which reroutes our requests to the right address. In our case, a request to http://FISION_ROUTER/hello_world will be handled by function hello_world.py.
 
-##### 2.
+##### Step #2.
 If the function does not exist in execution, a new container would be instantiated with the adequate execution environment (nodeJS is our example). Then, the new container will retrieve the hello.js function by means of the fetcher.
 
-##### 3.
+##### Step #3.
 After a few milliseconds, the container will be ready to handle the HTTP request that it will receive through the router.
 
-##### 4.
+##### Step #4.
 Once the request is satisfied, the container containing the function will remain alive during a specific period of time. If, during this time no request is received, it will be destroyed. These functions in stand-by are dubbed hot functions.
 
 Delving a bit deeper into Fission’s deployment architecture in Kubernetes, it is important to point out that all components, except environment containers, are deployed in a namespace called “fission”. The environment containers created and instantiated for each language and/or function created are deployed in a different namespace dubbed “fission-function”.
@@ -77,7 +77,7 @@ After Installation of Kubernetes cluster, make sure cluster running.
 
 ```kubectl create -f fission.yml```
 
-Set up services with NodePort in case you are deploying it on Minikube or on  cloud service provider. These files run on 31313 and 31314 ports.
+Set up services & Ingress controller with ClusterIP/NodePort. Setup nodeport on 31313 and 31314 ports.
 
 ```kubectl create -f fission-route.yml```
 
