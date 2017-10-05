@@ -35,13 +35,13 @@ After Installation of Kubernetes cluster, make sure cluster running.
 
 Set up services with NodePort in case you are deploying it on Minikube or on  cloud service provider. These files run on 31313 and 31314 ports.
 
-```kubectl create -f fission-nodeport.yml```
+```kubectl create -f fission-route.yml```
 
 Set the FISSION_URL and FISSION_ROUTER environment variable. The fission command line interface uses the FISSION_URL to find the server. The URL has to be prefixed with http://.
 
 ```
-export FISSION_URL=http://$(server ip):31313
-export FISSION_ROUTER=$(server ip):31314
+export FISSION_URL=http://fission-url.cloudapps.cloud-cafe.in
+export FISSION_ROUTER=fission-router.cloudapps.cloud-cafe.in
 ```
 
 #### Step-3 Installing fission CLI (Command Line Interface)
@@ -51,6 +51,10 @@ export FISSION_ROUTER=$(server ip):31314
 #### Step-4 Installing Fission UI (User Interface)
 
 ```kubectl create -f fission-ui.yml```
+
+#### Step-5 Check Fission UI in browser
+
+```http://fission-ui.cloudapps.cloud-cafe.in`
 
 ## Sample Deployment code using fission
 
@@ -94,6 +98,6 @@ route created: GET /hello_world -> hello_world
 ###### Test if the function runs
 
 ```
-curl http://$FISSION_ROUTER/hello_world
+curl http://fission-router.cloudapps.cloud-cafe.in/hello_world
 Hello, World!
 ```
