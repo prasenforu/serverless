@@ -54,7 +54,7 @@ export FISSION_ROUTER=fission-router.cloudapps.cloud-cafe.in
 
 #### Step-5 Check Fission UI in browser
 
-```http://fission-ui.cloudapps.cloud-cafe.in`
+```http://fission-ui.cloudapps.cloud-cafe.in```
 
 ## Sample Deployment code using fission
 
