@@ -15,7 +15,7 @@ Fission is open source under the Apache License. Fission can run on any platform
 #### Fission’s architecture consists of the following component
 
 ##### Controller 
-contains CRUD APIs for Kubernetes functions, HTTP triggers, environments and watchers. This is the component with which the component talks. keeps track of functions, HTTP routes, event triggers, and environment images
+Its a CRUD (Create, Read, Update and Delete) APIs for Kubernetes functions, HTTP triggers, environments and watchers. This is the component with which the component talks. keeps track of functions, HTTP routes, event triggers, and environment images
 
 ##### Pool Manager
 Manages shared resources (generic and function containers). It has a simple API. Manages pools of idle environment containers, the loading of functions into these containers, and the killing of function instances when they're idle.
@@ -55,7 +55,7 @@ Once the function is ready for use, its life cycle consists of the following ste
 When the function is called through HTTP, what we do is contact the router, which reroutes our requests to the right address. In our case, a request to http://FISION_ROUTER/hello_world will be handled by function hello_world.py.
 
 ##### Step #2.
-If the function does not exist in execution, a new container would be instantiated with the adequate execution environment (nodeJS is our example). Then, the new container will retrieve the hello.js function by means of the fetcher.
+If the function does not exist in execution, a new container would be instantiated with the adequate execution environment (python is our example). Then, the new container will retrieve the hello_world.py function by means of the fetcher.
 
 ##### Step #3.
 After a few milliseconds, the container will be ready to handle the HTTP request that it will receive through the router.
