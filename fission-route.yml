@@ -54,7 +54,7 @@ metadata:
   namespace: fission
 spec:
   rules:
-    - host: fission-controller.cloudapps.cloud-cafe.in
+    - host: fission-url.cloudapps.cloud-cafe.in
       http:
         paths:
           - backend:
